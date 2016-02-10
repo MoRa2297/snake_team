@@ -17,6 +17,8 @@ public String toString(){
 	return s;
 }
 
+
+
 	
 /*public int Conta(){
 		
@@ -125,8 +127,28 @@ public void eliminaInCoda(){
 	}
 }
 
+public void inserisciInPos(int x, int pos){
+	Nodo p = head;
+	Nodo pn= new Nodo(x,null);
+	int i=0;
+	if(pos<=1 || head==null) inserisciInTesta(x);
+	else if(pos>conta()){
+			InserisciInCoda(x);
+		}else{
+			while(i<pos-1){
+				p=p.getLink();
+				i++;
+			}
+			pn.setLink(p.getLink());
+			p.setLink(pn);
+		}
+}
 
-
-
+public void eliminaDaPos(int pos){
+	Nodo pp, ps;
+	if(pos==1) eliminaInTesta();
+	if(pos==conta()) eliminaInCoda();
+	else 
+}
 
 }
