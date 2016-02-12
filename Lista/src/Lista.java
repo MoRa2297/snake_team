@@ -135,7 +135,7 @@ public void inserisciInPos(int x, int pos){
 	else if(pos>conta()){
 			InserisciInCoda(x);
 		}else{
-			while(i<pos-1){
+			while(i<pos-2){
 				p=p.getLink();
 				i++;
 			}
@@ -145,10 +145,56 @@ public void inserisciInPos(int x, int pos){
 }
 
 public void eliminaDaPos(int pos){
-	Nodo pp, ps;
+	Nodo pp = head;
+	int i=0;
 	if(pos==1) eliminaInTesta();
 	if(pos==conta()) eliminaInCoda();
-	else 
+	else{
+		while(i<pos-1){
+			pp=pp.getLink();
+			i++;
+		}
+		pp.setLink(pp.getLink().getLink());
+	}
+}
+
+public int shuffle(int k,int h){
+	if(k == h){
+		return 0;
+	}if(h < 1 || k >= conta()){
+		return -1;
+	}else{
+		Nodo k1 = new Nodo();
+		Nodo h1 = new Nodo();
+		int c = 0;
+		Nodo p = head;
+		
+		while(p!=null){
+			if(c == k){
+				k1.setInfo(p.getInfo());
+			}if(c == h){
+				h1.setInfo(p.getInfo());
+			}
+			c++;
+			p = p.getLink();
+		}
+		
+		Nodo d = head;
+		int d1 = 0;
+		while(d!=null){
+			if(d1 == k){
+				d.setInfo(h1.getInfo());
+			}if(d1 == h){
+				d.setInfo(k1.getInfo());
+			}
+			d1++;
+			d = d.getLink();
+		}
+		
+		return 1;
+		
+		
+	}
 }
 
 }
